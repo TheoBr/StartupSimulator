@@ -1,3 +1,5 @@
+import sys, os 
+
 class CompanyState:
 
 	funding = 0
@@ -37,3 +39,14 @@ class Employee:
 
 		# TODO: Function that takes in time and determines salary
 		salary = 0
+
+
+
+
+def main():
+	name = raw_input("Please enter a name for your new startup")
+	initial_state = CompanyState(name)
+
+
+if __name__ == '__main__':
+	main()
