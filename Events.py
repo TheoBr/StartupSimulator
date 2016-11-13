@@ -31,6 +31,12 @@ def hireOverworkedCollegeKidFromHackathon(state):
 	state.addEmployee(newHire)
 	return state
 
+def fireEmployeeForUnsactionedOfficeNudity(state):
+	if len(state.employees) > 0:
+		state.employees.pop()
+	return state
+
+
 
 
 
@@ -43,5 +49,7 @@ def getEvents():
 	events['nigerianPrinceInvestsInheritance'] = nigerianPrinceInvestsInheritance
 	events['suedByPatentTrollForUsingPrinter'] = suedByPatentTrollForUsingPrinter
 	events['secureWorldSeriesFundingFromMLB'] = secureWorldSeriesFundingFromMLB
+	events['hireOverworkedCollegeKidFromHackathon'] = hireOverworkedCollegeKidFromHackathon
+	events['fireEmployeeForUnsactionedOfficeNudity'] = fireEmployeeForUnsactionedOfficeNudity
 
 	return events
