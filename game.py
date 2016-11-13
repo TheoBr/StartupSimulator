@@ -1,49 +1,52 @@
 #! /usr/bin/env python
 
-import pygame, sys
+import pygame, sys, time, string
 from pygame.locals import *
 from companyState import *
 
+pygame.init()
+blue = 0, 0, 255
+font = pygame.font.Font(None, 36)
+
+def header(screen, companyState):
+
+	width = screen.get_width()
+	height = screen.get_height()
+
+	# Draw header line
+	point1 = 0, 30
+	point2 = screen.get_width(), 30
+	pygame.draw.line(screen, blue, point1, point2)
+
+	# Draw company name in header text
+	text = font.render(companyState.companyName, 1, blue)
+	screen.blit(text, (2, 5))
+
+	# Draw day in header text
+	text = font.render(str(companyState.day), 1, blue)
+	screen.blit(text, (width-30, 5))
+
+	return screen
+
 
 def main():
+
 	company = CompanyState("Tinder")
 
-	# Initialise screen
-	pygame.init()
 	screen = pygame.display.set_mode((640, 400))
-	pygame.display.set_caption('Startup Simulator')
+	running = True
+	screen.fill((0, 0, 0))
 
-	# Fill background
-	background = pygame.Surface(screen.get_size())
-	background = background.convert()
-	background.fill((250, 250, 250))
+	while running:
+	    event = pygame.event.poll()
+	    if event.type== pygame.QUIT:
+	    	running = False
 
-	# Display some text
-	font = pygame.font.Font(None, 36)
-	text = font.render(company.companyName, 1, (10, 10, 10))
-	textpos = text.get_rect()
-	textpos.centerx = background.get_rect().centerx
-	background.blit(text, textpos)
+	    screen = header(screen, company)
+	    pygame.display.flip()
 
-	# Blit everything to the screen
-	screen.blit(background, (0, 0))
-	pygame.display.flip()
-
-
-
-	# Event loop
-	while 1:
-		for event in pygame.event.get():
-			if event.type == QUIT:
-				return
-
-		screen.blit(background, (0, 0))
-		pygame.display.flip()
-
+	    company.tickTime()
+	    time.sleep(2)
 
 if __name__ == '__main__':
 	main()
-
-
-
-

@@ -23,8 +23,8 @@ class CompanyState:
 		else:
 			print "ERROR: Make sure you are adding Employees"
 
-	def tickTime():
-		day+=1
+	def tickTime(self):
+		self.day+=1
 		# TODO: 
 		# - Random chance of event
 		# - Deduct salaries if mod(365) == 0
@@ -39,9 +39,6 @@ class Employee:
 
 		# TODO: Function that takes in time and determines salary
 		salary = 0
-
-
-
 
 def main():
 	name = raw_input("Please enter a name for your new startup")
