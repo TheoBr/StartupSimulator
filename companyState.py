@@ -1,4 +1,5 @@
 import sys, os 
+from functions import *
 
 class CompanyState:
 
@@ -34,11 +35,11 @@ class Employee:
 	salary = 0
 	name = ""
 
-	def __init__(self, name):
+	def __init__(self, name, salary):
 		self.name = name
 
 		# TODO: Function that takes in time and determines salary
-		salary = 0
+		self.salary = salary 
 
 def main():
 	name = raw_input("Please enter a name for your new startup")
