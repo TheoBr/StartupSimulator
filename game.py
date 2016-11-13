@@ -6,9 +6,12 @@ from companyState import *
 
 pygame.init()
 blue = 0, 0, 255
+background = 0,0,0
 font = pygame.font.Font(None, 36)
 
 def header(screen, companyState):
+
+	screen.fill(background)
 
 	width = screen.get_width()
 	height = screen.get_height()
@@ -38,15 +41,18 @@ def main():
 	screen.fill((0, 0, 0))
 
 	while running:
-	    event = pygame.event.poll()
-	    if event.type== pygame.QUIT:
-	    	running = False
+        # events for txtbx
+		events = pygame.event.get()
+        # process other events
+		for event in events:
+			# close it x button si pressed
+			if event.type == QUIT: return
 
-	    screen = header(screen, company)
-	    pygame.display.flip()
+		screen = header(screen, company)
+		pygame.display.flip()
 
-	    company.tickTime()
-	    time.sleep(2)
+		company.tickTime()
+		time.sleep(2)
 
 if __name__ == '__main__':
 	main()
